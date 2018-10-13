@@ -48,5 +48,4 @@ public class MyQueue {
 		head = head + 1;
 		return value;
 	}
-
 }
