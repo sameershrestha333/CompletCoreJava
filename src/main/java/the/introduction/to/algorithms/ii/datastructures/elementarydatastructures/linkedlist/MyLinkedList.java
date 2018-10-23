@@ -44,11 +44,90 @@ public class MyLinkedList {
 
 	}
 
+	public Object getLength() {
+		int count = 0;
+		if (isEmpty()) {
+			return count;
+		}
+		Node current = head;
+		while (current.next != null) {
+			count++;
+			current = current.next;
+		}
+		// adding last element as well
+		return ++count;
+	}
+
+	public boolean search(int i) {
+		Node current = head;
+		while (current.next != null) {
+			if (current.data == i) {
+				return true;
+			}
+			current = current.next;
+		}
+
+		if (current.data == i) {
+			return true;
+		}
+		return false;
+	}
+
+	public Object getNthElement(int nthItem) {
+		int count = 0;
+		Node current = head;
+		while (current.next != null) {
+			count++;
+			if (count == nthItem) {
+				return current.data;
+			}
+			current = current.next;
+		}
+		if (++count == nthItem) {
+			return current.data;
+		}
+		return 0;
+	}
+
+	public Object getEndElement() {
+		Node current = head;
+		while (current.next != null) {
+			current = current.next;
+		}
+		return current.data;
+	}
+
+	public Object getMiddleElement() {
+		Node frontCount = head;
+		Node endCount = head;
+		while (endCount != null && endCount.next != null) {
+			frontCount = frontCount.next;
+			endCount = endCount.next.next;
+		}
+
+		return frontCount.data;
+	}
+
+	public Object countGivenElement(int i) {
+		int count = 0;
+		Node current = head;
+		while (current.next != null) {
+			if (current.data == i) {
+				count++;
+			}
+			current = current.next;
+		}
+		if (current.data == i) {
+			count++;
+		}
+		return count;
+	}
+
 	public void addAtGivenPosition(int position, int data) {
 		Node newNode = new Node(data);
 		int count = 0;
 		Node current = head;
-		while (head.next != null) {
+		while (current.next != null) {
 			count++;
 			if (count == position) {
 				newNode.next = current.next;
@@ -114,19 +193,71 @@ public class MyLinkedList {
 		System.out.println(head.data);
 	}
 
-	public void deleteGivenData(int i) {
+	public void deleteGivenData(int data) {
 		Node current = head;
-		if (head.data == i) {
+		if (head.data == data) {
 			deleteAtFront();
+			return;
 		}
 
 		while (current.next != null) {
-			if (current.next.data == i) {
+			if (current.next.data == data) {
 				current.next = current.next.next;
 				return;
 			}
 			current = current.next;
 		}
+	}
+
+	public Object GetNth(int i) {
+		Node nodeA = head;
+		Node nodeB = head;
+		int count = 1;
+		while (count != i) {
+			count++;
+			nodeB = nodeB.next;
+		}
+		while (nodeB.next != null) {
+			nodeA = nodeA.next;
+			nodeB = nodeB.next;
+		}
+
+		return nodeA.data;
+	}
+
+	public boolean detectLoop() {
+		Node nodeA = head;
+		Node nodeB = head;
+		while (nodeB != null && nodeB.next != null) {
+			nodeA = nodeA.next;
+			nodeB = nodeB.next.next;
+			if (nodeA == nodeB) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	public Object countNodesinLoop() {
+		Node nodeA = head;
+		Node nodeB = head;
+		while (nodeB != null && nodeB.next != null) {
+			nodeA = nodeA.next;
+			nodeB = nodeB.next.next;
+			int count = 1;
+			if (nodeA == nodeB) {
+				nodeB = nodeB.next;
+				while (nodeA != nodeB) {
+					count++;
+					nodeB = nodeB.next;
+
+				}
+				return count;
+
+			}
+		}
+		return 0;
 	}
 
 }
