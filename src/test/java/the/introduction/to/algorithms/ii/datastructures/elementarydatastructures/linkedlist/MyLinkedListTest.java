@@ -1,12 +1,19 @@
 package the.introduction.to.algorithms.ii.datastructures.elementarydatastructures.linkedlist;
 
 import static org.junit.Assert.*;
+
+import org.junit.Before;
 import org.junit.Test;
 
 public class MyLinkedListTest {
 
-	MyLinkedList linkedlist = new MyLinkedList();
+	MyLinkedList linkedlist;// = new MyLinkedList();
 
+	@Before
+	public void setUp() throws Exception {
+		linkedlist = new MyLinkedList();
+	}
+	
 	/*
 	 * @Test public void test() { assertTrue(linkedlist.isEmpty()); }
 	 */
