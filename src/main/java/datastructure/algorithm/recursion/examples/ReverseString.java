@@ -1,7 +1,14 @@
 package datastructure.algorithm.recursion.examples;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class ReverseString {
 
+	List<Integer> listss = new ArrayList<>();
+
+	
 	public static void main(String[] args) {
 		System.out.println(reverseStringIteratively("sameer"));
 		System.out.println(reverseStringRecursively("sameer"));
@@ -22,6 +29,7 @@ public class ReverseString {
 		}
 		return builder.toString();
 	}
+	
 
 	private static String reverse(String str) {
 		int n = str.length();
